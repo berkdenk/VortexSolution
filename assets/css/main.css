@@ -703,6 +703,38 @@ section,
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
+/* YENİ EKLENECEK / DÜZENLENECEK KISIM */
+@media (min-width: 992px) { /* Sadece geniş ekranlar (Desktop) için geçerli olacak */
+  .hero .hero-img {
+    /* Görselin kapsayıcısı olan .hero-img div'ini hedefliyoruz */
+    width: 45vw; /* Görüntü alanı genişliğinin %65'i kadar bir genişlik veriyoruz */
+                 /* İstediğiniz genişliğe göre bu değeri artırabilirsiniz (örn. 70vw, 75vw) */
+    position: absolute; /* Mutlak konumlandırma ile akıştan çıkarıyoruz */
+    right: 0;           /* Ekranın en sağına sabitliyoruz */
+    top: 0;             /* Ekranın en üstüne sabitliyoruz */
+    height: 100%;       /* Hero bölümünün tüm yüksekliğini kaplamasını sağlıyoruz */
+    overflow: hidden;
+    margin: 50px;   /* Eğer görsel taşıyorsa gizlemek için */
+  }
+
+  .hero .hero-img img {
+    /* Görselin kendisinin .hero-img içinde nasıl davranacağını belirliyoruz */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Görselin en-boy oranını koruyarak alanı doldurmasını sağlar,
+                           fazla kısımlar kırpılabilir */
+    object-position: right center; /* Görseli sağa yaslar */
+  }
+
+  /* Metin sütununu görselin altından kaymasını engellemek için */
+  .hero .col-lg-6.order-2 { /* Bu sizin orijinal HTML'inizdeki text sütunu */
+    position: relative; /* Z-index'in çalışması için relative konumlandırma */
+    z-index: 2;         /* Görselin üstünde kalmasını sağlar */
+  }
+}
+/* YENİ EKLENECEK / DÜZENLENECEK KISIM BİTİŞİ */
+
+
 @media (max-width: 640px) {
   .hero h1 {
     font-size: 28px;
