@@ -139,8 +139,10 @@
 
     // Resimler yüklendikçe layout'u güncelle
     imagesLoaded(container, function () {
-      initIsotope.layout();
+      initIsotope.arrange({ filter }); // filtreyi uygula
+      initIsotope.layout();            // layout’u yenile
     });
+
 
     // Filtreler
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
