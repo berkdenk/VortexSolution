@@ -149,7 +149,11 @@
         filter: filter,
         sortBy: sort
       });
-    });
+
+      imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+        initIsotope.layout(); // Görsel yüklendikten sonra yeniden düzenle
+      });
+
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
       filters.addEventListener('click', function() {
