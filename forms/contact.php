@@ -1,41 +1,33 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+// Alıcı e-posta adresi
+$to = 'berktugdenk@gmail.com';
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+// Formdan gelen veriler
+$name = isset($_POST['name']) ? strip_tags(trim($_POST['name'])) : '';
+$email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
+$subject = isset($_POST['subject']) ? strip_tags(trim($_POST['subject'])) : 'Yeni iletişim formu mesajı';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Basit doğrulama
+if (empty($name) || empty($email) || empty($message)) {
+    echo 'Lütfen tüm zorunlu alanları doldurun.';
+    exit;
+}
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+// Email başlığı ve içeriği
+$email_subject = "İletişim Formu: $subject";
+$email_body = "İsim: $name\n";
+$email_body .= "Email: $email\n\n";
+$email_body .= "Mesaj:\n$message\n";
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+// Email başlıkları (header)
+$headers = "From: $name <$email>\r\n";
+$headers .= "Reply-To: $email\r\n";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
-
-  echo $contact->send();
+// Email gönderimi
+if (mail($to, $email_subject, $email_body, $headers)) {
+    echo 'OK';  // JavaScript ile bu mesajı yakalayıp kullanıcıya bildirebilirsin
+} else {
+    echo 'Email gönderilirken hata oluştu.';
+}
 ?>
