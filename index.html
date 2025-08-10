@@ -813,7 +813,9 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact Us</h2>
         <p>Have a project in mind or a question? Reach out to us. We'd love to hear from you!</p>
-      </div><div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      </div>
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
 
@@ -831,35 +833,47 @@
                 <h3>Call Us</h3>
                 <p>+48 (***) ***-***</p>
               </div>
-          
-            </div><div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            </div>
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
                 <p>contact@vortex-solutions.com</p>
               </div>
-            </div></div>
-
-
+            </div>
+          </div>
 
           <div class="col-lg-7">
-            <form action="/forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500" data-nestify="true" data-name="">
-              <div class="row gy-4">
+            <form 
+              name="contact"
+              method="POST" 
+              data-netlify="true" 
+              netlify-honeypot="bot-field"
+              class="php-email-form"
+              data-aos="fade-up" 
+              data-aos-delay="500"
+            >
+              <!-- HoneyPot field for spam bots -->
+              <input type="hidden" name="form-name" value="contact">
+              <p class="hidden">
+                <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+              </p>
 
+              <div class="row gy-4">
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -869,15 +883,17 @@
 
                   <button type="submit">Send Message</button>
                 </div>
-
               </div>
             </form>
-          </div></div>
+          </div>
+
+        </div>
 
       </div>
 
     </section>
     <!-- /Contact Section -->
+
 
   </main>
 
