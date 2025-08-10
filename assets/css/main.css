@@ -1277,6 +1277,55 @@ section,
   line-height: 1.2;
 }
 
+/* Portfolio Link Cards */
+/* Portfolio Link Cards - Sabit Boyut */
+.portfolio .portfolio-link-card {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;          /* Sabit genişlik */
+  height: 120px;         /* Sabit yükseklik */
+  padding: 14px 18px;
+  margin: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-link-card a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  word-wrap: break-word;   /* Uzun kelimelerde taşmayı önler */
+  max-width: 100%;
+  transition: color 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-color: var(--accent-color);
+}
+
+.portfolio .portfolio-link-card:hover a {
+  color: var(--accent-color);
+}
+
+@media (max-width: 575px) {
+  .portfolio .portfolio-link-card {
+    width: 100%;     /* Mobilde tam genişlik */
+    height: auto;    /* Mobilde yükseklik serbest */
+  }
+}
+
+
 /*.portfolio .portfolio-content .portfolio-info .preview-link:hover,   ---------Istersem projelere Link Olusturabilirim ?---------
 .portfolio .portfolio-content .portfolio-info .details-link:hover {
   color: var(--accent-color);
